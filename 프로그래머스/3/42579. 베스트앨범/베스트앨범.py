@@ -16,11 +16,8 @@ def solution(genres, plays):
     
     for r in genre_rank:
         p = musics[r]['plays']
-        # p.sort(reverse=True)
         p.sort(key=lambda x: (-x[0], x[1]))
-        if len(p) > 1:
-            for i in p[:2]:
-                best_album.append(i[1])
-        else:
-            best_album.append(p[0][1])    
+        n = min(2, len(p))
+        for i in p[:n]:
+            best_album.append(i[1])   
     return best_album
