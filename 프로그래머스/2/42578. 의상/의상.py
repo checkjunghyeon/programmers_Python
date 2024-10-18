@@ -3,14 +3,14 @@ import math
 def solution(clothes):
     dic = {}
     for c in clothes:
-        if c[1] in dic:
-            dic[c[1]].append(c[0])
+        type = c[1]
+        if type in dic:
+            dic[type] += 1
         else:
-            dic[c[1]] = [c[0]]
+            dic[type] = 1
 
     sum = 1
-    for v in dic.values():
-        l = len(v)
+    for l in dic.values():
         sum *= (math.comb(l, 0) + math.comb(l, 1))
     
     return sum - 1
