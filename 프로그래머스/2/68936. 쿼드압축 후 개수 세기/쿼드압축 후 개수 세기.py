@@ -1,31 +1,17 @@
 def solution(arr):
     n = len(arr)
-    count = []
-    quadtree(n, arr, count)
-    
-    answer = [count.count(0), count.count(1)]
-    
-    return answer
+    count = [0, 0]
+    quadtree(n, arr, 0, 0, count)
+    return count
 
-def quadtree(n, arr, count):
-    upperLeft, upperRight, lowerLeft, lowerRight = [], [], [], []
+def quadtree(n, arr, row, col, count):
+    first_value = arr[row][col]
+    if all(arr[i][j] == first_value for i in range(row, row + n) for j in range(col, col + n)):
+        count[first_value] += 1
+        return
+
     half_n = n // 2
-    
-    if all(x == 0 for row in arr for x in row):
-        count.append(0)
-        return
-    elif all(x == 1 for row in arr for x in row):
-        count.append(1)
-        return
-    
-    for u in arr[:half_n]:  
-        upperLeft.append(u[:half_n])
-        upperRight.append(u[half_n:])
-    for l in arr[half_n:]:
-        lowerLeft.append(l[:half_n])
-        lowerRight.append(l[half_n:])
-        
-    quadtree(half_n, upperLeft, count)  # upperLeft
-    quadtree(half_n, upperRight, count)  # upperRight
-    quadtree(half_n, lowerLeft, count)  # lowerLeft
-    quadtree(half_n, lowerRight, count)  # lowerRight
+    quadtree(half_n, arr, row, col, count)              # upperLeft
+    quadtree(half_n, arr, row, col + half_n, count)      # upperRight
+    quadtree(half_n, arr, row + half_n, col, count)      # lowerLeft
+    quadtree(half_n, arr, row + half_n, col + half_n, count)  # lowerRight
