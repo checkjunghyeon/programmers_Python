@@ -1,6 +1,6 @@
 def solution(dirs):
     cur = [0, 0]
-    history = []
+    # history = []
     check_list = []
     
     for d in dirs:
@@ -17,10 +17,10 @@ def solution(dirs):
             cur[0] -= 1
             
         if pre != cur and [pre[0], pre[1], cur[0], cur[1]] not in check_list:
-            history.append([pre[0], pre[1], cur[0], cur[1]])
+            # history.append([pre[0], pre[1], cur[0], cur[1]])
             check_list.append([pre[0], pre[1], cur[0], cur[1]])
             check_list.append([cur[0], cur[1], pre[0], pre[1]])
         
     # print(history)
     
-    return len(history)
+    return len(check_list) // 2
