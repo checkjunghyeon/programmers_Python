@@ -8,21 +8,6 @@ def solution(want, number, discount):
         wlist[w] = n
 
     for i in range(days):
-#         flag = []
-#         counts = Counter(discount[i:i + 10])
-        
-#         for k, v in counts.items():
-#             if k in wlist.keys():
-#                 if v == wlist[k]:
-#                     flag.append(True)
-#                 else:
-#                     flag.append(False)
-#             else:
-#                  flag.append(False)   
-
-#         if all(flag) == True:
-#             answer += 1
-
         if wlist == Counter(discount[i:i + 10]):
             answer += 1
             
