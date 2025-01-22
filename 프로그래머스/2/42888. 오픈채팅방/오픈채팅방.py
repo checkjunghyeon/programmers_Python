@@ -17,10 +17,6 @@ def solution(record):
         else:
             user[uid] = nickname
 
-    keys = user.keys()
-    values = user.values()
-    
-
     # print(f"{logs=}")
     answer = update_logs(logs, user)
     # print(f"{answer=}")
