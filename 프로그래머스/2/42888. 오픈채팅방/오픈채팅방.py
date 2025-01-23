@@ -17,15 +17,9 @@ def solution(record):
         else:
             user[uid] = nickname
 
-    # print(f"{logs=}")
-    answer = update_logs(logs, user)
-    # print(f"{answer=}")
+    answer = []
+    for log in logs:
+        _uid = log.split('님')[0]
+        answer.append(log.replace(_uid, user.get(_uid, _uid)))
     
     return answer
-
-def update_logs(logs, user):
-    updated_logs = [
-        log.replace(log.split('님')[0], user.get(log.split('님')[0], log.split('님')[0]))
-        for log in logs
-    ]
-    return updated_logs
