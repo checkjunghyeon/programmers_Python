@@ -1,10 +1,10 @@
-def fibonacci(n):
-    dp = [0] * (n+1)
-    dp[0], dp[1] = 0, 1
-    
-    for i in range(2, n+1):
-        dp[i] = dp[i-1] + dp[i-2]
-    return dp[n]
-    
 def solution(n):
-    return fibonacci(n) % 1234567
+    # DP 배열 초기화
+    F = [0] * (n + 1)
+    
+    F[0], F[1] = 0, 1
+    
+    for i in range(2, n + 1):
+        F[i] = F[i-1] + F[i-2]
+    
+    return F[n] % 1234567
